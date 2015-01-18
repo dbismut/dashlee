@@ -36,14 +36,35 @@
     <script src="bower_components/smoothie/smoothie.js"></script>
     <!-- endbuild -->
 
+    <link rel="import" href="bower_components/core-media-query/core-media-query.html">
+
     <!-- build:vulcanized elements/elements.vulcanized.html -->
     <link rel="import" href="elements/elements.html">
     <!-- endbuild-->
   </head>
   <body fullbleed unresolved>
 
-    <dashlee-dashboard unresolved></dashlee-dashboard>
+  <template id="dashboard" is="auto-binding" unresolved>
+    <core-media-query query="max-width: 640px" queryMatches="{{phoneScreen}}"></core-media-query>
+    <div class="wrapper {{{compact: phoneScreen} | tokenList }}">
+     <dashlee-header></dashlee-header>
 
+     <div class="dashboard" layout vertical?="{{phoneScreen}}" horizontal?="{{!phoneScreen}}" wrap>
+        <dashlee-degrees id="degrees" class="item large" auto-vertical></dashlee-degrees>
+        <dashlee-coffee id="coffee" class="item large" auto-vertical></dashlee-coffee>
+        <dashlee-flush id="likes" class="item" auto-vertical></dashlee-flush>
+        <dashlee-stairs id="stairs" class="item large" auto-vertical></dashlee-stairs>
+        <dashlee-fax id="fax" class="item invert" auto-vertical></dashlee-fax>
+        <dashlee-bottle id="bottle" class="item large" auto-vertical></dashlee-bottle>
+        <dashlee-likes id="likes" class="item" auto-vertical></dashlee-likes>
+        <dashlee-printer id="printer" class="item large invert" auto-vertical></dashlee-printer>
+        <div class="item" auto-vertical>Epsilon</div>
+        <dashlee-switch id="switch" class="item large invert" auto-vertical></dashlee-switch>
+        <dashlee-tracer id="tracer" class="item large" auto-vertical></dashlee-tracer>
+     </div>
+
+     <dashlee-footer></dashlee-footer>
+  </template>
     <!-- build:js scripts/app.js -->
     <script src="scripts/app.js"></script>
     <!-- endbuild-->

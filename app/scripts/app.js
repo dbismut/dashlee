@@ -7,7 +7,7 @@
 
   document.addEventListener('polymer-ready', function () {
     // Perform some behaviour
-    dashboard_ = document.querySelector('dashlee-dashboard');
+    dashboard_ = document.querySelector('#dashboard');
     console.log('Polymer is ready to rock!');
 
   });
