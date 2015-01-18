@@ -1,0 +1,56 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="dashlee-tracer" attributes="">
+  <template>
+    <link rel="stylesheet" href="dashlee-tracer.css">
+
+    <div class="printer" on-click="{{triggerPrint}}">
+      <div id="paper" class="paper">
+        <div id="numbers" class="numbers">
+          <div class="number">51</div>
+          <div class="number">50</div>
+          <div class="number">49</div>
+          <div class="number">48</div>
+          <div class="number">47</div>
+        </div>
+      </div>
+    </div>
+    <div class="date">This year</div>
+    <div class="subtitle">meters of scroll paper printed</div>
+  </template>
+  <script>
+  (function() {
+    /*jslint nomen: true */
+    /*global _ */
+
+    var counter_ = 49;
+    var catchup_ = 0;
+    var index_ = 0;
+    var paper_, numbers_;
+    Polymer({
+      ready: function() {
+        paper_ = this.$.paper;
+        numbers_ = this.$.numbers;
+      },
+      triggerPrint : function() {
+        catchup_++;
+        this.printStuff();
+      },
+      printStuff: _.throttle(function() {
+        counter_++;
+        index_++;
+
+        var number = numbers_.lastElementChild;
+        number.innerHTML = counter_ + 2;
+        numbers_.insertBefore(number, numbers_.firstElementChild);
+        paper_.style.backgroundPositionY = (160 * index_ + 4) + 'px';
+        if (--catchup_ > 0) {
+          this.async(function() {
+            this.printStuff();
+          }, 600);
+        }
+      }, 600)
+    });
+  })();
+  </script>
+</polymer-element>

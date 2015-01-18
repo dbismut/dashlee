@@ -1,0 +1,54 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../dashlee-printer-sheet/dashlee-printer-sheet.html">
+
+<polymer-element name="dashlee-printer">
+  <template>
+    <link rel="stylesheet" href="dashlee-printer.css">
+    <div id="pile" class="pile" on-click="{{triggerPrint}}">
+      <dashlee-printer-sheet class="noanim" data-index="0" counter="50"></dashlee-printer-sheet>
+      <dashlee-printer-sheet class="noanim" data-index="1" counter="51"></dashlee-printer-sheet>
+      <dashlee-printer-sheet class="noanim" data-index="2" counter="52"></dashlee-printer-sheet>
+      <dashlee-printer-sheet class="noanim" data-index="3" counter="53"></dashlee-printer-sheet>
+      <dashlee-printer-sheet class="noanim" data-index="4" counter="54"></dashlee-printer-sheet>
+
+
+    </div>
+  </template>
+  <script>
+  (function() {
+    /*jslint nomen: true */
+    /*global _ */
+
+    var counter_ = 54;
+    var catchup_ = 0;
+    var pile_;
+    Polymer({
+      ready: function() {
+        pile_ = this.$.pile;
+      },
+      triggerPrint : function() {
+        catchup_++;
+        this.printStuff();
+      },
+      printStuff: _.throttle(function() {
+        counter_++;
+
+        var sheet = document.createElement('dashlee-printer-sheet');
+        sheet.setAttribute('data-index', counter_ % 5);
+        sheet.setAttribute('counter', counter_);
+
+        pile_.appendChild(sheet);
+        setTimeout(function() {
+          pile_.removeChild(pile_.children[0]);
+        }, 200);
+        if (--catchup_ > 0) {
+          this.async(function() {
+            this.printStuff();
+          }, 200);
+        }
+
+      }, 200)
+    });
+  })();
+  </script>
+</polymer-element>

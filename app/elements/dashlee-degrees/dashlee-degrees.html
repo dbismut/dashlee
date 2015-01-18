@@ -1,0 +1,68 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="dashlee-degrees" attributes="">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      #canvas {
+        position: absolute;
+        bottom: 60px;
+        left: 0;
+      }
+      .bottom {
+        background: white;
+        height: 60px;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+      }
+    </style>
+    <div class="date">Now</div>
+    <div class="number">21</div>
+    <div class="subtitle">degrees indoor</div>
+    <canvas id="canvas" height="70" width="360"></canvas>
+    <div class="bottom"></div>
+
+  </template>
+  <script>
+    (function () {
+      /*jslint nomen: true */
+      /*global SmoothieChart, TimeSeries */
+      var line1_;
+
+      Polymer({
+        domReady: function() {
+          this.fitCanvas();
+
+          var smoothie = new SmoothieChart({
+            interpolation: 'linear',
+            labels: {disabled: true},
+            grid: {
+              fillStyle: 'transparent',
+              strokeStyle: 'transparent'
+            }
+          });
+          smoothie.streamTo(this.$.canvas, 1000);
+          // Data
+          line1_ = new TimeSeries();
+          // Add to SmoothieChart
+          smoothie.addTimeSeries(line1_, {
+            fillStyle:'#fff',
+            strokeStyle: 'transparent'
+          });
+          // Add a random value to each line every second
+          line1_.append(new Date().getTime(), 0);
+          setInterval(function() {
+            line1_.append(new Date().getTime(), Math.random());
+          }, 1000);
+        },
+        fitCanvas: function() {
+          this.$.canvas.width  = this.offsetWidth;
+        }
+      });
+    })();
+  </script>
+</polymer-element>

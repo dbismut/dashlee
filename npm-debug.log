@@ -1,0 +1,240 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'generator-polymer',
+1 verbose cli   'generator-mocha' ]
+2 info using npm@2.2.0
+3 info using node@v0.10.23
+4 silly cache add args [ 'generator-polymer', null ]
+5 verbose cache add spec generator-polymer
+6 silly cache add args [ 'generator-mocha', null ]
+7 verbose cache add spec generator-mocha
+8 silly cache add parsed spec { raw: 'generator-polymer',
+8 silly cache add   scope: null,
+8 silly cache add   name: 'generator-polymer',
+8 silly cache add   rawSpec: '',
+8 silly cache add   spec: '*',
+8 silly cache add   type: 'range' }
+9 verbose addNamed generator-polymer@*
+10 silly addNamed semver.valid null
+11 silly addNamed semver.validRange *
+12 silly addNameRange { name: 'generator-polymer', range: '*', hasData: false }
+13 silly mapToRegistry name generator-polymer
+14 silly mapToRegistry using default registry
+15 silly mapToRegistry registry https://registry.npmjs.org/
+16 silly mapToRegistry uri https://registry.npmjs.org/generator-polymer
+17 verbose addNameRange registry:https://registry.npmjs.org/generator-polymer not in flight; fetching
+18 silly cache add parsed spec { raw: 'generator-mocha',
+18 silly cache add   scope: null,
+18 silly cache add   name: 'generator-mocha',
+18 silly cache add   rawSpec: '',
+18 silly cache add   spec: '*',
+18 silly cache add   type: 'range' }
+19 verbose addNamed generator-mocha@*
+20 silly addNamed semver.valid null
+21 silly addNamed semver.validRange *
+22 silly addNameRange { name: 'generator-mocha', range: '*', hasData: false }
+23 silly mapToRegistry name generator-mocha
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry uri https://registry.npmjs.org/generator-mocha
+27 verbose addNameRange registry:https://registry.npmjs.org/generator-mocha not in flight; fetching
+28 verbose request uri https://registry.npmjs.org/generator-polymer
+29 verbose request no auth needed
+30 info attempt registry request try #1 at 22:48:34
+31 verbose request id 43fb7b81d7928961
+32 verbose etag "9C90DHNJK2LTMHLLMRBCHYF84"
+33 http request GET https://registry.npmjs.org/generator-polymer
+34 verbose request uri https://registry.npmjs.org/generator-mocha
+35 verbose request no auth needed
+36 info attempt registry request try #1 at 22:48:34
+37 verbose etag "3K2N5AOM2I83B0MBUCPHV9QPI"
+38 http request GET https://registry.npmjs.org/generator-mocha
+39 http 304 https://registry.npmjs.org/generator-polymer
+40 silly get cb [ 304,
+40 silly get   { date: 'Sat, 17 Jan 2015 21:48:35 GMT',
+40 silly get     server: 'Apache',
+40 silly get     via: '1.1 varnish',
+40 silly get     'last-modified': 'Sat, 17 Jan 2015 21:48:35 GMT',
+40 silly get     'cache-control': 'max-age=60',
+40 silly get     etag: '"9C90DHNJK2LTMHLLMRBCHYF84"',
+40 silly get     age: '37',
+40 silly get     'x-served-by': 'cache-fra1232-FRA',
+40 silly get     'x-cache': 'HIT',
+40 silly get     'x-cache-hits': '1',
+40 silly get     'x-timer': 'S1421531315.745937,VS0,VE0',
+40 silly get     vary: 'Accept',
+40 silly get     'content-length': '0',
+40 silly get     'keep-alive': 'timeout=10, max=50',
+40 silly get     connection: 'Keep-Alive' } ]
+41 verbose etag https://registry.npmjs.org/generator-polymer from cache
+42 silly addNameRange number 2 { name: 'generator-polymer', range: '*', hasData: true }
+43 silly addNameRange versions [ 'generator-polymer',
+43 silly addNameRange   [ '0.0.2',
+43 silly addNameRange     '0.0.3',
+43 silly addNameRange     '0.0.4',
+43 silly addNameRange     '0.0.5',
+43 silly addNameRange     '0.0.6',
+43 silly addNameRange     '0.0.7',
+43 silly addNameRange     '0.0.8',
+43 silly addNameRange     '0.0.9',
+43 silly addNameRange     '0.1.1',
+43 silly addNameRange     '0.2.2',
+43 silly addNameRange     '0.3.0',
+43 silly addNameRange     '0.3.1',
+43 silly addNameRange     '0.4.0-1',
+43 silly addNameRange     '0.4.0',
+43 silly addNameRange     '0.4.1',
+43 silly addNameRange     '0.5.0',
+43 silly addNameRange     '0.5.1',
+43 silly addNameRange     '0.6.0',
+43 silly addNameRange     '0.6.1',
+43 silly addNameRange     '0.6.2',
+43 silly addNameRange     '0.6.3' ] ]
+44 verbose addNamed generator-polymer@0.6.3
+45 silly addNamed semver.valid 0.6.3
+46 silly addNamed semver.validRange 0.6.3
+47 silly cache afterAdd generator-polymer@0.6.3
+48 verbose afterAdd /Users/david/.npm/generator-polymer/0.6.3/package/package.json not in flight; writing
+49 verbose afterAdd /Users/david/.npm/generator-polymer/0.6.3/package/package.json written
+50 http 304 https://registry.npmjs.org/generator-mocha
+51 silly get cb [ 304,
+51 silly get   { date: 'Sat, 17 Jan 2015 21:48:36 GMT',
+51 silly get     server: 'Apache',
+51 silly get     via: '1.1 varnish',
+51 silly get     'last-modified': 'Sat, 17 Jan 2015 21:48:36 GMT',
+51 silly get     'cache-control': 'max-age=60',
+51 silly get     etag: '"3K2N5AOM2I83B0MBUCPHV9QPI"',
+51 silly get     age: '0',
+51 silly get     'x-served-by': 'cache-fra1236-FRA',
+51 silly get     'x-cache': 'HIT',
+51 silly get     'x-cache-hits': '1',
+51 silly get     'x-timer': 'S1421531316.739745,VS0,VE171',
+51 silly get     vary: 'Accept',
+51 silly get     'content-length': '0',
+51 silly get     'keep-alive': 'timeout=10, max=50',
+51 silly get     connection: 'Keep-Alive' } ]
+52 verbose etag https://registry.npmjs.org/generator-mocha from cache
+53 silly addNameRange number 2 { name: 'generator-mocha', range: '*', hasData: true }
+54 silly addNameRange versions [ 'generator-mocha',
+54 silly addNameRange   [ '0.1.0', '0.1.1', '0.1.2', '0.1.3', '0.1.4', '0.1.5', '0.1.6' ] ]
+55 verbose addNamed generator-mocha@0.1.6
+56 silly addNamed semver.valid 0.1.6
+57 silly addNamed semver.validRange 0.1.6
+58 silly cache afterAdd generator-mocha@0.1.6
+59 verbose afterAdd /Users/david/.npm/generator-mocha/0.1.6/package/package.json not in flight; writing
+60 verbose afterAdd /Users/david/.npm/generator-mocha/0.1.6/package/package.json written
+61 silly install resolved [ { name: 'generator-polymer',
+61 silly install resolved     version: '0.6.3',
+61 silly install resolved     description: 'Yeoman generator for Polymer',
+61 silly install resolved     keywords: [ 'yeoman-generator', 'scaffold', 'framework', 'mvc', 'polymer' ],
+61 silly install resolved     homepage: 'https://github.com/yeoman/generator-polymer',
+61 silly install resolved     bugs: { url: 'https://github.com/yeoman/generator-polymer/issues' },
+61 silly install resolved     author: { name: 'Chrome Developer Relations' },
+61 silly install resolved     main: 'app/index.js',
+61 silly install resolved     repository:
+61 silly install resolved      { type: 'git',
+61 silly install resolved        url: 'git://github.com/yeoman/generator-polymer.git' },
+61 silly install resolved     scripts: { test: 'jshint {app,el,gh,seed}/*.js && mocha --reporter spec' },
+61 silly install resolved     dependencies:
+61 silly install resolved      { chalk: '^0.5.1',
+61 silly install resolved        lodash: '^2.4.1',
+61 silly install resolved        ncp: '^1.0.1',
+61 silly install resolved        rimraf: '^2.2.8',
+61 silly install resolved        'yeoman-generator': '^0.17.0',
+61 silly install resolved        yosay: '^1.0.0' },
+61 silly install resolved     peerDependencies: { 'generator-mocha': '>=0.1.3', yo: '>=1.0.0' },
+61 silly install resolved     devDependencies: { jshint: '*', mocha: '*' },
+61 silly install resolved     engines: { node: '>=0.10.0', npm: '>=1.2.10' },
+61 silly install resolved     licenses: [ [Object] ],
+61 silly install resolved     readme: '[![NPM version](http://img.shields.io/npm/v/generator-polymer.svg?style=flat)](http://npmjs.org/generator-polymer)\n[![NPM downloads](http://img.shields.io/npm/dm/generator-polymer.svg?style=flat)](http://npmjs.org/generator-polymer)\n[![Build Status](http://img.shields.io/travis/yeoman/generator-polymer/master.svg?style=flat)](https://travis-ci.org/yeoman/generator-polymer)\n[![Dependency Status](http://img.shields.io/david/yeoman/generator-polymer.svg?style=flat)](https://david-dm.org/yeoman/generator-polymer)\n\n## Yeoman generator for Polymer projects\n\n<img src="http://i.imgur.com/dsFChIk.png"/>\n\n## Introduction\n\n[Polymer](http://www.polymer-project.org/) is a library of polyfills and sugar which enable the use of Web Components in modern browsers. The project allows developers to build apps using the platform of tomorrow and inform the W3C of places where in-flight specifications can be further improved.\n\n`generator-polymer` provides Polymer scaffolding using [Yeoman](http://yeoman.io) (a scaffolding tool for the web), letting you easily create and customize Polymer (custom) elements via the command-line and import them using HTML Imports. This saves you time writing boilerplate code so you can start writing up the logic to your components straight away.\n\n## Features\n\n* A Polymer app scaffold built with HTML5 Boilerplate\n* Sub-generator to create Polymer elements for your app\n* Boilerplate to create reusable Polymer elements\n* Quick deploy to GitHub pages\n* All the goodness of `seed-element` (docs & landing page for your element)\n* Support for SASS/SCSS and Autoprefixer\n* PageSpeed Insights for performance tuning\n* [web-component-tester](https://github.com/Polymer/web-component-tester) support\n\n## Installation\n\nInstall the generator\n`npm install -g generator-polymer`\n\nMake a new directory and cd into it\n`mkdir -p my-project && cd $_`\n\nScaffold a new Polymer project:\n`yo polymer`\n\n## Generators\n\nAvailable generators:\n\n- [polymer (aka polymer:app)](#app)\n- [polymer:element](#element-alias-el)\n- [polymer:seed](#seed)\n- [polymer:gh](#gh)\n\n**Note: Generators are to be run from the root of your app**\n\n### App\nSets up a new Polymer app, generating all the boilerplate you need to get started.\n\nExample:\n```bash\nyo polymer\n```\n\n### Element (alias: El)\nGenerates a polymer element in `app/elements` and appends an import to `app/elements/elements.html`.\n\nExample:\n```bash\nyo polymer:element my-element\n\n# or use the alias\n\nyo polymer:el my-element\n```\n\n**Note: You must pass in an element name, and the name must contain a dash "-"**\n\nOne can also include element dependencies to be imported. For instance, if you\'re creating a `fancy-menu` element which needs to import `core-menu` and `core-icon-button` as dependencies, you can generate the file like so:\n\n```bash\nyo polymer:el fancy-menu core-menu core-icon-button\n```\n\n### Seed\nGenerates a reusable polymer element based on the [seed-element workflow](http://www.polymer-project.org/docs/start/reusableelements.html). **This should only be used if you\'re creating a standalone element repo that you intend to share with others via bower.** If you\'re just building a Polymer app, stick to the [Element](#element-alias-el) generator.\n\nThe seed-element generator will construct a new element _and_ its directory for\nyou. Be aware: all bower dependencies will be installed as _siblings_ of the\nnewly generated element. Make sure that you generate the seed element within a\ndirectory that is intended to contain multiple components!\n\nExample:\n```bash\nmkdir -p components && cd $_\nyo polymer:seed x-foo\n```\n\n### Gh\nGenerates a Github pages branch for your [seed-element](#seed).\n\nExample:\n```bash\ncd components/x-foo\nyo polymer:gh\n```\n\n## Testing\n\nThe project generated by `yo polymer` contains support for [web-component-tester](https://github.com/Polymer/web-component-tester). The following commands are included:\n\nRun local tests (in terminal):\n```bash\ngrunt test\n```\n\nRun local tests (in browser):\n```bash\ngrunt test:browser\n```\n\nRun remote tests with [SauceLabs](https://saucelabs.com/):\n```bash\ngrunt test:remote\n```\n\nSee the [web-component-tester Grunt readme](https://github.com/Polymer/web-component-tester#grunt) for configuration options.\n\n## Gotchas\n\n### Autoprefixer and style elements\n\nThe Autoprefixer task will not work with `style` elements mixed into HTML files (it breaks). Meaning, if you drop a style tag inside of your Polymer element, it will not be processed by Autoprefixer. **Only external CSS files can/will be processed by Autoprefixer**.\n\n## Contribute\n\nSee the [contributing docs](https://github.com/yeoman/yeoman/blob/master/contributing.md)\n\nWhen submitting an issue, please follow the [guidelines](https://github.com/yeoman/yeoman/blob/master/contributing.md#issue-submission). Especially important is to make sure Yeoman is up-to-date, and providing the command or commands that cause the issue.\n\n## License\n\n[BSD license](http://opensource.org/licenses/bsd-license.php)\n',
+61 silly install resolved     readmeFilename: 'readme.md',
+61 silly install resolved     _id: 'generator-polymer@0.6.3',
+61 silly install resolved     _from: 'generator-polymer@*' },
+61 silly install resolved   { name: 'generator-mocha',
+61 silly install resolved     version: '0.1.6',
+61 silly install resolved     description: 'Yeoman generator for Mocha',
+61 silly install resolved     keywords:
+61 silly install resolved      [ 'yeoman-generator',
+61 silly install resolved        'scaffold',
+61 silly install resolved        'unit',
+61 silly install resolved        'test',
+61 silly install resolved        'testing',
+61 silly install resolved        'bdd',
+61 silly install resolved        'tdd',
+61 silly install resolved        'mocha' ],
+61 silly install resolved     author: { name: 'The Yeoman Team' },
+61 silly install resolved     repository:
+61 silly install resolved      { type: 'git',
+61 silly install resolved        url: 'https://github.com/yeoman/generator-mocha' },
+61 silly install resolved     scripts: { test: 'mocha --reporter spec' },
+61 silly install resolved     dependencies: { 'yeoman-generator': '^0.17.0' },
+61 silly install resolved     devDependencies: { mocha: '*' },
+61 silly install resolved     peerDependencies: { yo: '>=1.0.0' },
+61 silly install resolved     engines: { node: '>=0.10.0', npm: '>=1.2.10' },
+61 silly install resolved     license: 'BSD',
+61 silly install resolved     files: [ 'generators' ],
+61 silly install resolved     readme: '# Mocha generator [![Build Status](https://secure.travis-ci.org/yeoman/generator-mocha.svg?branch=master)](http://travis-ci.org/yeoman/generator-mocha)\n\n> Yeoman generator for [Mocha](http://visionmedia.github.io/mocha/)\n\n\n## Install\n\n```sh\n$ npm install --global generator-mocha\n```\n\n\n## Usage\n\n```sh\n$ yo mocha\n```\n\n\n## Contribute\n\nSee the [contributing docs](https://github.com/yeoman/yeoman/blob/master/contributing.md)\n\n\n## License\n\n[BSD license](http://opensource.org/licenses/bsd-license.php)\n',
+61 silly install resolved     readmeFilename: 'readme.md',
+61 silly install resolved     bugs: { url: 'https://github.com/yeoman/generator-mocha/issues' },
+61 silly install resolved     homepage: 'https://github.com/yeoman/generator-mocha',
+61 silly install resolved     _id: 'generator-mocha@0.1.6',
+61 silly install resolved     _from: 'generator-mocha@*' } ]
+62 info install generator-polymer@0.6.3 into /usr/local/lib
+63 info install generator-mocha@0.1.6 into /usr/local/lib
+64 info installOne generator-polymer@0.6.3
+65 verbose installOne of generator-polymer to /usr/local/lib not in flight; installing
+66 info installOne generator-mocha@0.1.6
+67 verbose installOne of generator-mocha to /usr/local/lib not in flight; installing
+68 verbose lock using /Users/david/.npm/_locks/generator-polymer-2ced2814dec48a08.lock for /usr/local/lib/node_modules/generator-polymer
+69 verbose lock using /Users/david/.npm/_locks/generator-mocha-61e557bff6e23a34.lock for /usr/local/lib/node_modules/generator-mocha
+70 silly install write writing generator-polymer 0.6.3 to /usr/local/lib/node_modules/generator-polymer
+71 silly cache addNamed cb generator-polymer@0.6.3
+72 verbose unbuild lib/node_modules/generator-polymer
+73 silly install write writing generator-mocha 0.1.6 to /usr/local/lib/node_modules/generator-mocha
+74 silly cache addNamed cb generator-mocha@0.1.6
+75 verbose unbuild lib/node_modules/generator-mocha
+76 info preuninstall generator-polymer@0.6.3
+77 info preuninstall generator-mocha@0.1.6
+78 info uninstall generator-polymer@0.6.3
+79 info uninstall generator-mocha@0.1.6
+80 verbose unbuild rmStuff generator-polymer@0.6.3 from /usr/local/lib/node_modules
+81 info postuninstall generator-polymer@0.6.3
+82 verbose unbuild rmStuff generator-mocha@0.1.6 from /usr/local/lib/node_modules
+83 info postuninstall generator-mocha@0.1.6
+84 verbose gentlyRm vacuuming /usr/local/lib/node_modules/generator-polymer
+85 silly gentlyRm purging /usr/local/lib/node_modules/generator-polymer
+86 verbose gentlyRm vacuuming /usr/local/lib/node_modules/generator-mocha
+87 silly gentlyRm purging /usr/local/lib/node_modules/generator-mocha
+88 verbose unlock done using /Users/david/.npm/_locks/generator-polymer-2ced2814dec48a08.lock for /usr/local/lib/node_modules/generator-polymer
+89 verbose unlock done using /Users/david/.npm/_locks/generator-mocha-61e557bff6e23a34.lock for /usr/local/lib/node_modules/generator-mocha
+90 verbose stack Error: EACCES, unlink '/usr/local/lib/node_modules/generator-polymer'
+91 verbose cwd /Users/david/Sites/dashlee
+92 error Darwin 14.0.0
+93 error argv "node" "/usr/local/bin/npm" "install" "-g" "generator-polymer" "generator-mocha"
+94 error node v0.10.23
+95 error npm  v2.2.0
+96 error path /usr/local/lib/node_modules/generator-polymer
+97 error code EACCES
+98 error errno 3
+99 error Error: EACCES, unlink '/usr/local/lib/node_modules/generator-polymer'
+99 error  { [Error: EACCES, unlink '/usr/local/lib/node_modules/generator-polymer']
+99 error   errno: 3,
+99 error   code: 'EACCES',
+99 error   path: '/usr/local/lib/node_modules/generator-polymer' }
+100 error Please try running this command again as root/Administrator.
+101 verbose exit [ 3, true ]
+102 verbose unbuild lib/node_modules/generator-polymer
+103 info preuninstall generator-polymer@0.6.3
+104 info uninstall generator-polymer@0.6.3
+105 verbose unbuild rmStuff generator-polymer@0.6.3 from /usr/local/lib/node_modules
+106 info postuninstall generator-polymer@0.6.3
+107 verbose gentlyRm vacuuming /usr/local/lib/node_modules/generator-polymer
+108 silly gentlyRm purging /usr/local/lib/node_modules/generator-polymer
+109 error error rolling back Error: EACCES, unlink '/usr/local/lib/node_modules/generator-polymer'
+109 error error rolling back  { [Error: EACCES, unlink '/usr/local/lib/node_modules/generator-polymer']
+109 error error rolling back   errno: 3,
+109 error error rolling back   code: 'EACCES',
+109 error error rolling back   path: '/usr/local/lib/node_modules/generator-polymer' }

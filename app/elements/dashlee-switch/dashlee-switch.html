@@ -1,0 +1,23 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="dashlee-switch" attributes="">
+  <template>
+    <link rel="stylesheet" href="dashlee-switch.css">
+    <div class="date">Today</div>
+    <div class="number">4996</div>
+    <div class="subtitle">persons have switched this button</div>
+    <div class="toggle">
+      <input type="checkbox" on-change="{{toggleLight}}">
+      <div class="switch"></div>
+    </div>
+  </template>
+  <script>
+  (function() {
+    Polymer({
+      toggleLight: function() {
+        this.fire('toggleLight');
+      }
+    });
+  })();
+  </script>
+</polymer-element>

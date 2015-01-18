@@ -1,0 +1,84 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="dashlee-stairs">
+  <template>
+    <link rel="stylesheet" href="dashlee-stairs.css">
+    <div id="stairsWrapper" class="stairs-wrapper" on-click="{{climbStairs}}">
+      <div class="stairs">
+        <div class="cube">
+          <div class="face top"></div>
+          <div class="face front"><div class="number">2003</div></div>
+        </div>
+      </div>
+      <div class="stairs">
+        <div class="cube">
+          <div class="face top"></div>
+          <div class="face front"><div class="number">2002</div></div>
+        </div>
+      </div>
+      <div class="stairs">
+        <div class="cube">
+          <div class="face top"></div>
+          <div class="face front"><div class="number">2001</div></div>
+        </div>
+      </div>
+      <div class="stairs">
+        <div class="cube">
+          <div class="face top"></div>
+          <div class="face front"><div class="number">2000</div></div>
+        </div>
+      </div>
+      <div class="stairs">
+        <div class="cube">
+          <div class="face top"></div>
+          <div class="face front"><div class="number">1999</div></div>
+        </div>
+      </div>
+    </div>
+    <div id="stats" class="stats">
+      <div class="date">Today</div>
+      <div class="subtitle">steps walked on the stairs</div>
+    </div>
+  </template>
+  <script>
+  (function() {
+    /*jslint nomen: true */
+    /*global _ */
+
+    var catchup_ = 0;
+    var counter_ = 2001;
+    var stairsWrapper_, self_, stats_;
+    Polymer({
+      ready: function() {
+        self_ = this;
+        stairsWrapper_ = this.$.stairsWrapper;
+        stats_ = this.$.stats;
+      },
+      climbStairs : function() {
+        catchup_++;
+        stats_.classList.add('hidden');
+        setTimeout(this.animateStairs, 100);
+      },
+      animateStairs : _.throttle(function() {
+
+        counter_++;
+
+        var stair = stairsWrapper_.lastElementChild;
+        stair.querySelector('.number').innerText = counter_ + 2;
+        stairsWrapper_.insertBefore(stair, stairsWrapper_.firstElementChild);
+
+        if (--catchup_ > 0) {
+          setTimeout(function () {
+              self_.animateStairs();
+          }, 500);
+        }
+        else {
+          setTimeout(function() {
+            stats_.classList.remove('hidden');
+          }, 500);
+        }
+      }, 500, {trailing: false})
+    });
+  })();
+  </script>
+</polymer-element>

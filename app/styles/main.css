@@ -1,0 +1,82 @@
+*, * /deep/ * {
+  box-sizing: border-box;
+  user-select: none;
+}
+
+body {
+  background: #000;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #fff;
+}
+
+* /deep/ .invert {
+  filter: invert(1);
+}
+
+body.invert {
+  background: white;
+}
+
+* /deep/ .number {
+  font-family: 'font-tsar';
+  font-size: 56px;
+  line-height: 52px;
+  -webkit-font-smoothing: antialiased;
+}
+
+* /deep/ .subtitle {
+  font-family: 'font-gotham';
+  text-transform: uppercase;
+  font-size: 26px;
+  -webkit-font-smoothing: antialiased;
+  /*-webkit-transform:translateZ(0px);*/
+}
+
+* /deep/ .date {
+  font-family: 'font-idlewild';
+  text-transform: uppercase;
+  font-size: 10px;
+  -webkit-font-smoothing: antialiased;
+}
+
+* /deep/ .sidlee {
+  font-family: 'font-sidlee';
+  text-transform: uppercase;
+  font-size: 26px;
+  word-spacing: -0.1em;
+}
+
+* /deep/ .hidden {
+  opacity: 0;
+}
+
+@font-face {
+  font-family: 'font-idlewild';
+  src: url('../styles/fonts/idlewild-bold.eot?#iefix') format('embedded-opentype'), url('../styles/fonts/idlewild-bold.woff') format('woff'), url('../styles/fonts/idlewild-bold.ttf') format('truetype'), url('../styles/fonts/idlewild-bold.svg#../styles/fonts/idlewild-bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'font-sidlee';
+  src: url('../styles/fonts/sidlee-extrabold.eot?#iefix') format('embedded-opentype'),
+       url('../styles/fonts/sidlee-extrabold.woff') format('woff'), url('../styles/fonts/sidlee-extrabold.ttf')  format('truetype'), url('../styles/fonts/sidlee-extrabold.svg#../styles/fonts/sidlee-extrabold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'font-tsar';
+  src: url('../styles/fonts/tstarpro-headline.eot?#iefix') format('embedded-opentype'),
+       url('../styles/fonts/tstarpro-headline.woff') format('woff'), url('../styles/fonts/tstarpro-headline.ttf')  format('truetype'), url('../styles/fonts/tstarpro-headline.svg#../styles/fonts/tstarpro-headline') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'font-gotham';
+  src: url('../styles/fonts/gothamhtf-lightcondensed.eot?#iefix') format('embedded-opentype'),
+       url('../styles/fonts/gothamhtf-lightcondensed.woff') format('woff'), url('../styles/fonts/gothamhtf-lightcondensed.ttf')  format('truetype'), url('../styles/fonts/gothamhtf-lightcondensed.svg#../styles/fonts/gothamhtf-lightcondensed') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
