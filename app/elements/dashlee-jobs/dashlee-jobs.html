@@ -1,0 +1,31 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="dashlee-jobs" attributes="">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      .fingers {
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        background: url(../../images/job_finger.svg) -20px 0 repeat;
+        height: 71px;
+        width: 100%;
+      }
+    </style>
+    <div class="date">Now</div>
+    <div class="number">3</div>
+    <div class="subtitle" style="margin-bottom: -6px">jobs<br>to get at</div>
+    <div class="sidlee">SID LEE</div>
+    <div class="fingers"></div>
+  </template>
+  <script>
+    (function () {
+      Polymer({
+        // define element prototype here
+      });
+    })();
+  </script>
+</polymer-element>

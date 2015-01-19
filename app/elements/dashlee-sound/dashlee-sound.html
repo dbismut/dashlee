@@ -1,6 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
-<polymer-element name="dashlee-degrees" attributes="">
+<polymer-element name="dashlee-sound" attributes="">
   <template>
     <style>
       :host {
@@ -8,12 +8,12 @@
       }
       #canvas {
         position: absolute;
-        bottom: 60px;
+        bottom: 30px;
         left: 0;
       }
       .bottom {
         background: white;
-        height: 60px;
+        height: 30px;
         width: 100%;
         position: absolute;
         left: 0;
@@ -21,8 +21,8 @@
       }
     </style>
     <div class="date">Now</div>
-    <div class="number">21</div>
-    <div class="subtitle">degrees indoor</div>
+    <div class="number">45</div>
+    <div class="subtitle">decibels of noise<br>at the central table</div>
     <canvas id="canvas" height="70" width="360"></canvas>
     <div class="bottom"></div>
 
@@ -32,32 +32,50 @@
       /*jslint nomen: true */
       /*global SmoothieChart, TimeSeries */
       var line1_;
+      var timer_ = null;
+
+      function gotoZero(value) {
+          timer_ = setTimeout(function() {
+            var v = value;
+            v = Math.max(Math.random() / 10, v + 0.3 - Math.random() * 2);
+            line1_.append(new Date().getTime(), v);
+            gotoZero(v);
+          }, 100);
+
+      }
 
       Polymer({
         domReady: function() {
           this.fitCanvas();
 
           var smoothie = new SmoothieChart({
-            interpolation: 'linear',
+            interpolation: 'beziers',
             labels: {disabled: true},
+            minValue: 0,
+            maxValue: 3,
             grid: {
               fillStyle: 'transparent',
               strokeStyle: 'transparent'
             }
           });
-          smoothie.streamTo(this.$.canvas, 1000);
-          // Data
+          smoothie.streamTo(this.$.canvas, 100);
           line1_ = new TimeSeries();
-          // Add to SmoothieChart
           smoothie.addTimeSeries(line1_, {
             fillStyle:'#fff',
             strokeStyle: 'transparent'
           });
-          // Add a random value to each line every second
+
           line1_.append(new Date().getTime(), 0);
           setInterval(function() {
-            line1_.append(new Date().getTime(), Math.random());
-          }, 1000);
+            var newVal = 1 + Math.random() * 2;
+            line1_.append(new Date().getTime(), newVal);
+            clearTimeout(timer_);
+            gotoZero(newVal);
+            // setTimeout(function() {
+            //     gotoZero(newVal);
+            //   }, 100);
+
+          }, 500);
         },
         fitCanvas: function() {
           this.$.canvas.width  = this.clientWidth;

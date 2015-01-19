@@ -1,0 +1,30 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="dashlee-visits" attributes="">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      .hand {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        background: url(../../images/hand.svg) center 0 no-repeat;
+        height: 76px;
+        width: 100%;
+      }
+    </style>
+    <div class="date">Today</div>
+    <div class="number">211</div>
+    <div class="subtitle">visitors<br>on this page</div>
+    <div class="hand"></div>
+  </template>
+  <script>
+    (function () {
+      Polymer({
+        // define element prototype here
+      });
+    })();
+  </script>
+</polymer-element>

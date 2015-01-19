@@ -1,6 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
-<polymer-element name="dashlee-switch" attributes="">
+<polymer-element name="dashlee-switch" attributes="switch">
   <template>
     <link rel="stylesheet" href="dashlee-switch.css">
     <div class="date">Today</div>
@@ -14,8 +14,11 @@
   <script>
   (function() {
     Polymer({
+      ready: function() {
+        this.switch = false;
+      },
       toggleLight: function() {
-        this.fire('toggleLight');
+        this.switch = !this.switch;
       }
     });
   })();

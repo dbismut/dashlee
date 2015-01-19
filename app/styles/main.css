@@ -3,6 +3,11 @@
   user-select: none;
 }
 
+html {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background: #000;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -13,14 +18,10 @@ body {
   filter: invert(1);
 }
 
-body.invert {
-  background: white;
-}
-
 * /deep/ .number {
   font-family: 'font-tsar';
   font-size: 56px;
-  line-height: 52px;
+  line-height: 60px;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -28,6 +29,7 @@ body.invert {
   font-family: 'font-gotham';
   text-transform: uppercase;
   font-size: 26px;
+  line-height: 0.95em;
   -webkit-font-smoothing: antialiased;
   /*-webkit-transform:translateZ(0px);*/
 }
@@ -51,19 +53,27 @@ body.invert {
 }
 
 .wrapper {
-  width: 80%;
-  margin: 0 10% 60px 10%;
+  width: 100%;
+  padding: 0 10% 60px 10%;
+  background: #000;
 }
 .wrapper.compact {
   width: 100%;
-  margin-right: 0;
-  margin-left: 0;
+  padding-right: 0;
+  padding-left: 0;
 }
 .dashboard {
   width: 100%;
   border-top: 2px solid white;
   border-right: 2px solid white;
 }
+
+.wrapper.compact .dashboard {
+  border: 2px solid white;
+}
+
+
+
 .dashboard > .item {
   position: relative;
   display: block;
@@ -76,6 +86,15 @@ body.invert {
   background: black url(../../images/dot.png) repeat 20px 20px;
   flex: 1 1 auto;
 }
+
+.wrapper.compact .dashboard > .item {
+  border-left: none;
+}
+
+.wrapper.compact .dashboard > .item:last-child {
+  border-bottom: none;
+}
+
 .dashboard > .item.invert {
   border-bottom: 2px solid black;
   border-left: 2px solid black;

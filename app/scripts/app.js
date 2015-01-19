@@ -12,13 +12,14 @@
 
   });
 
-  document.addEventListener('toggleLight', function() {
-    console.log('switching lights');
-    document.body.classList.toggle('invert');
-  });
+  // document.addEventListener('toggleLight', function() {
+  //   console.log('switching lights');
+  //   document.body.classList.toggle('invert');
+  // });
 
   window.onresize = _.debounce(function() {
     dashboard_.$.degrees.fitCanvas();
+    dashboard_.$.sound.fitCanvas();
   }, 300);
 
 // wrap document so it plays nice with other libraries
