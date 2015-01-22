@@ -4,12 +4,12 @@
 <polymer-element name="dashlee-printer">
   <template>
     <link rel="stylesheet" href="dashlee-printer.css">
-    <div id="pile" class="pile" on-click="{{triggerPrint}}">
-      <dashlee-printer-sheet class="noanim" data-index="0" counter="50"></dashlee-printer-sheet>
-      <dashlee-printer-sheet class="noanim" data-index="1" counter="51"></dashlee-printer-sheet>
-      <dashlee-printer-sheet class="noanim" data-index="2" counter="52"></dashlee-printer-sheet>
-      <dashlee-printer-sheet class="noanim" data-index="3" counter="53"></dashlee-printer-sheet>
-      <dashlee-printer-sheet class="noanim" data-index="4" counter="54"></dashlee-printer-sheet>
+    <div id="pile" class="pile" on-click="{{tick}}">
+      <dashlee-printer-sheet class="noanim" data-index="0" counter="0"></dashlee-printer-sheet>
+      <dashlee-printer-sheet class="noanim" data-index="1" counter="0"></dashlee-printer-sheet>
+      <dashlee-printer-sheet class="noanim" data-index="2" counter="0"></dashlee-printer-sheet>
+      <dashlee-printer-sheet class="noanim" data-index="3" counter="0"></dashlee-printer-sheet>
+      <dashlee-printer-sheet id="firstSheet" class="noanim" data-index="4" counter="[[count]]"></dashlee-printer-sheet>
 
 
     </div>
@@ -19,35 +19,44 @@
     /*jslint nomen: true */
     /*global _ */
 
-    var counter_ = 54;
     var catchup_ = 0;
-    var pile_;
+    var self_, pile_, timer_;
     Polymer({
+      count: 0,
       ready: function() {
+        self_ = this;
         pile_ = this.$.pile;
       },
-      triggerPrint : function() {
-        catchup_++;
+      initSensor: function(sensor) {
+        self_.count = sensor.value;
+        this.$.firstSheet.setAttribute('counter', self_.count);
+      },
+      tick: function(sensor) {
+        this.setCountTo(this.count + sensor.value);
+      },
+      setCountTo: function(count) {
+        catchup_ = count - this.count;
         this.printStuff();
       },
       printStuff: _.throttle(function() {
-        counter_++;
+        clearTimeout(timer_);
+        if (catchup_ > 0) {
+          self_.count++;
+          catchup_--;
 
-        var sheet = document.createElement('dashlee-printer-sheet');
-        sheet.setAttribute('data-index', counter_ % 5);
-        sheet.setAttribute('counter', counter_);
+          var sheet = document.createElement('dashlee-printer-sheet');
+          sheet.setAttribute('data-index', self_.count % 5);
+          sheet.setAttribute('counter', self_.count);
 
-        pile_.appendChild(sheet);
-        setTimeout(function() {
-          pile_.removeChild(pile_.children[0]);
-        }, 200);
-        if (--catchup_ > 0) {
-          this.async(function() {
-            this.printStuff();
+          pile_.appendChild(sheet);
+
+          setTimeout(function() {
+            pile_.removeChild(pile_.children[0]);
           }, 200);
-        }
 
-      }, 200)
+          timer_ = setTimeout(self_.printStuff, 1000);
+        }
+      }, 1000, {trailing: true})
     });
   })();
   </script>

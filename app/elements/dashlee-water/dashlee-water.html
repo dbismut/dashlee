@@ -1,21 +1,26 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
-<polymer-element name="dashlee-bottle">
+<polymer-element name="dashlee-water">
   <template>
-    <link rel="stylesheet" href="dashlee-bottle.css">
-    <div class="column">
-      <div class="date">Today</div>
-      <div class="number">2</div>
-      <div class="subtitle">liters<br>of<br>fountain<br>water<br>drunk</div>
+    <link rel="stylesheet" href="dashlee-water.css">
+<div class="column">
+  <div class="date">Today</div>
+  <div class="number">2</div>
+  <div class="subtitle">liters
+    <br>of
+    <br>fountain
+    <br>water
+    <br>drunk</div>
+</div>
+<div class="column">
+  <div class="bottle" on-click="{{giveMeADrink}}">
+    <div id="level" class="level" data-level="0">
+      <div class="wave"></div>
+      <div id="bubbles" class="bubbles"></div>
     </div>
-    <div class="column">
-    <div class="bottle" on-click="{{giveMeADrink}}">
-      <div id="level" class="level" data-level="0">
-        <div class="wave"></div>
-        <div id="bubbles" class="bubbles"></div>
-      </div>
-    </div>
-    </div>
+  </div>
+</div>
+
   </template>
   <script>
     (function () {

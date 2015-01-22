@@ -1,19 +1,24 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+
 <polymer-element name="dashlee-coffee">
   <template>
     <link rel="stylesheet" href="dashlee-coffee.css">
     <div class="date">Today</div>
-    <div class="number">24</div>
+    <div id="number" class="number odometer">[[count]]</div>
     <div class="subtitle">coffees poured</div>
-    <svg id="svg" on-click="{{triggerCoffee}}"></svg>
+    <svg id="svg" on-click="{{tick}}"></svg>
   </template>
   <script>
   (function() {
     /*jslint nomen: true */
-    /*global Snap, mina, TimelineLite */
-    var filledIndex_ = 3,
+    /*global _, Snap, mina, TimelineLite, Odometer */
+    var self_,
+      filledIndex_ = 3,
       cups_,
-      s_;
+      s_,
+      timer_,
+      od_,
+      catchup_ = 0;
 
     function fillHalfCup(c) {
       c.coffee.animate({
@@ -47,6 +52,39 @@
     }
 
     Polymer({
+      count: 0,
+      ready: function(){
+        self_ = this;
+      },
+      attached: function() {
+        od_ = new Odometer({
+          el: self_.$.number,
+          value: self_.count,
+          format: '',
+        });
+      },
+      initSensor: function(sensor) {
+        catchup_ = 0;
+        self_.count = sensor.value;
+        od_.update(self_.count);
+      },
+      tick: function() {
+        catchup_++;
+        self_.animateCount();
+      },
+      setCountTo: function(count) {
+        catchup_ = count - self_.count;
+        self_.animateCount();
+      },
+      animateCount: _.throttle(function() {
+        clearTimeout(timer_);
+        if (catchup_ > 0) {
+          od_.update(++self_.count);
+          catchup_--;
+          self_.fillFirstCup();
+          timer_ = setTimeout(self_.animateCount, 1800);
+        }
+      }, 1700, {trailing: true}),
       domReady: function() {
         s_ = Snap(this.$.svg);
         var cup = Snap();
@@ -76,10 +114,9 @@
         this.fillCup(cups_[1], false);
         this.fillCup(cups_[2], false);
       },
-      triggerCoffee : function() {
-        //catchup_++;
+      fillFirstCup : function() {
         this.fillCup(cups_[filledIndex_], true);
-          filledIndex_ = ++filledIndex_ % cups_.length;
+        filledIndex_ = ++filledIndex_ % cups_.length;
       },
       fillCup : function(c, animFlag) {
         if(c.coffee) {

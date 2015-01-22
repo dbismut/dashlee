@@ -78,7 +78,9 @@
           }, 500);
         },
         fitCanvas: function() {
-          this.$.canvas.width  = this.clientWidth;
+          this.async(function() {
+            this.$.canvas.width  = this.clientWidth;
+          }, null, 400);
         }
       });
     })();

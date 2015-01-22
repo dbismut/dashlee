@@ -4,37 +4,35 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>dashlee</title>
+    <title>SID LEE • DASH LEE</title>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/fonts.css" type="text/css">
     <link rel="stylesheet" href="styles/main.css" type="text/css" shim-shadowdom>
+    <link rel="stylesheet" href="styles/odometer.css" type="text/css" shim-shadowdom>
     <!-- endbuild-->
 
 
-    <!-- build:js bower_components/underscore/underscore.min.js -->
+    <!-- build:js vendors/vendors.min.js -->
     <script src="bower_components/underscore/underscore.js"></script>
-    <!-- endbuild -->
-
-    <!-- build:js bower_components/webcomponentsjs/webcomponents.min.js -->
     <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
-    <!-- endbuild -->
-
-    <!-- build:js bower_components/Snap.svg/snap.svg-min.js -->
     <script src="bower_components/Snap.svg/dist/snap.svg.js"></script>
-    <!-- endbuild -->
-
-    <!-- build:js bower_components/gsap/TimelineLite.min.js -->
     <script src="bower_components/gsap/src/uncompressed/TweenMax.js"></script>
-    <!-- endbuild -->
-
-    <!-- build:js bower_components/GSAPSnapPlugin/SnapPlugin.min.js -->
     <script src="bower_components/GSAPSnapPlugin/SnapPlugin.js"></script>
-    <!-- endbuild -->
-
-    <!-- build:js bower_components/smoothie/smoothie.min.js -->
     <script src="bower_components/smoothie/smoothie.js"></script>
-    <!-- endbuild -->
+    <script src="bower_components/socket.io-client/socket.io.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/moment-timezone/builds/moment-timezone-with-data.js"></script>
+    <script src="scripts/api/sidlee-client.js"></script>
+    <script>
+      window.odometerOptions = {
+        auto: false,
+        duration: 2000
+      };
+    </script>
+    <script src="bower_components/odometer/odometer.js"></script>
+    <!-- endbuild-->
 
     <link rel="import" href="bower_components/core-media-query/core-media-query.html">
 
@@ -44,30 +42,37 @@
   </head>
   <body fullbleed unresolved>
 
+
   <template id="dashboard" is="auto-binding" unresolved>
+
     <core-media-query query="max-width: 640px" queryMatches="{{phoneScreen}}"></core-media-query>
+    <dashlee-loader id="loader" class="loading"></dashlee-loader>
     <div class="wrapper {{{invert: switchStatus} | tokenList }} {{{compact: phoneScreen} | tokenList }}">
      <dashlee-header></dashlee-header>
-
      <div class="dashboard" layout vertical?="{{phoneScreen}}" horizontal?="{{!phoneScreen}}" wrap>
-        <dashlee-degrees id="degrees" class="item large" auto-vertical></dashlee-degrees>
+        <dashlee-degrees id="fridgeDegrees" class="item large" auto-vertical></dashlee-degrees>
         <dashlee-coffee id="coffee" class="item large" auto-vertical></dashlee-coffee>
         <dashlee-sound id="sound" class="item large invert" auto-vertical></dashlee-sound>
-        <dashlee-flush id="likes" class="item" auto-vertical></dashlee-flush>
-        <dashlee-stairs id="stairs" class="item large" auto-vertical></dashlee-stairs>
+        <dashlee-flush id="flush" class="item" auto-vertical></dashlee-flush>
+        <dashlee-stairs id="stairs" class="item large" auto-vertical count="2000"></dashlee-stairs>
+        <dashlee-water id="water" class="item large" auto-vertical></dashlee-water>
+        <dashlee-devices id="devices" class="item invert" auto-vertical></dashlee-devices>
         <dashlee-undo id="undo" class="item" auto-vertical></dashlee-undo>
         <dashlee-fax id="fax" class="item invert" auto-vertical></dashlee-fax>
-        <dashlee-bottle id="bottle" class="item large" auto-vertical></dashlee-bottle>
+        <dashlee-baby id="baby" class="item" auto-vertical></dashlee-baby>
+        <dashlee-fridge id="fridge" class="item large" auto-vertical></dashlee-fridge>
         <dashlee-likes id="likes" class="item" auto-vertical></dashlee-likes>
         <dashlee-printer id="printer" class="item large invert" auto-vertical></dashlee-printer>
         <dashlee-visits id="visits" class="item" auto-vertical></dashlee-visits>
-        <dashlee-switch id="switch" class="item large invert" auto-vertical switch="{{switchStatus}}"></dashlee-switch>
-        <dashlee-tracer id="tracer" class="item large" auto-vertical></dashlee-tracer>
+        <dashlee-lightswitch id="lightswitch" class="item large invert" auto-vertical switch="{{switchStatus}}"></dashlee-lightswitch>
+        <dashlee-tracer id="tracer" class="item large" auto-vertical count="23"></dashlee-tracer>
         <dashlee-jobs id="jobs" class="item" auto-vertical></dashlee-jobs>
      </div>
 
      <dashlee-footer></dashlee-footer>
   </template>
+
+
     <!-- build:js scripts/app.js -->
     <script src="scripts/app.js"></script>
     <!-- endbuild-->

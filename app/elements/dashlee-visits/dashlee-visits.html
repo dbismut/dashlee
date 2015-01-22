@@ -1,29 +1,48 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
-<polymer-element name="dashlee-visits" attributes="">
+<polymer-element name="dashlee-visits">
   <template>
-    <style>
-      :host {
-        display: block;
-      }
-      .hand {
-        position: absolute;
-        bottom: 20px;
-        left: 0;
-        background: url(../../images/hand.svg) center 0 no-repeat;
-        height: 76px;
-        width: 100%;
-      }
-    </style>
+    <link rel="stylesheet" href="dashlee-visits.css">
     <div class="date">Today</div>
-    <div class="number">211</div>
+    <div id="number" class="number">[[count]]</div>
     <div class="subtitle">visitors<br>on this page</div>
-    <div class="hand"></div>
+    <div id="hand" class="hand" on-click="{{tick}}">
+      <div class="hand-curves"></div>
+    </div>
   </template>
   <script>
     (function () {
+      /*jslint nomen: true */
+      /*global Odometer */
+
+      var self_, od_;
+
       Polymer({
-        // define element prototype here
+        count: 0,
+        ready: function() {
+          self_ = this;
+        },
+        attached: function() {
+          od_ = new Odometer({
+            el: self_.$.number,
+            value: self_.count,
+            format: ''
+          });
+        },
+        tick: function(sensor) {
+          self_.setCountTo(sensor.value);
+          self_.$.hand.classList.add('shake');
+          setTimeout(function() {
+            self_.$.hand.classList.remove('shake');
+          }, 3000);
+        },
+        initSensor: function(sensor) {
+          self_.setCountTo(sensor.value);
+        },
+        setCountTo: function(count) {
+          self_.count = count;
+          od_.update(self_.count);
+        }
       });
     })();
   </script>

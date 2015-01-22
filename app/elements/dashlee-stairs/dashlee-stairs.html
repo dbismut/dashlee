@@ -1,37 +1,37 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
-<polymer-element name="dashlee-stairs">
+<polymer-element name="dashlee-stairs" attributes="count">
   <template>
     <link rel="stylesheet" href="dashlee-stairs.css">
-    <div id="stairsWrapper" class="stairs-wrapper" on-click="{{climbStairs}}">
+    <div id="stairsWrapper" class="stairs-wrapper" on-click="{{tick}}">
       <div class="stairs">
         <div class="cube">
           <div class="face top"></div>
-          <div class="face front"><div class="number">2003</div></div>
+          <div class="face front"><div class="number">[[count | plus(2)]]</div></div>
         </div>
       </div>
       <div class="stairs">
         <div class="cube">
           <div class="face top"></div>
-          <div class="face front"><div class="number">2002</div></div>
+          <div class="face front"><div class="number">[[count | plus(1)]]</div></div>
         </div>
       </div>
       <div class="stairs">
         <div class="cube">
           <div class="face top"></div>
-          <div class="face front"><div class="number">2001</div></div>
+          <div class="face front"><div class="number">[[count]]</div></div>
         </div>
       </div>
       <div class="stairs">
         <div class="cube">
           <div class="face top"></div>
-          <div class="face front"><div class="number">2000</div></div>
+          <div class="face front"><div class="number">[[count | plus(-1)]]</div></div>
         </div>
       </div>
       <div class="stairs">
         <div class="cube">
           <div class="face top"></div>
-          <div class="face front"><div class="number">1999</div></div>
+          <div class="face front"><div class="number">[[count | plus(-2)]]</div></div>
         </div>
       </div>
     </div>
@@ -46,38 +46,45 @@
     /*global _ */
 
     var catchup_ = 0;
-    var counter_ = 2001;
-    var stairsWrapper_, self_, stats_;
+    var self_, stairsWrapper_, stats_, timer_;
     Polymer({
+      count: 0,
       ready: function() {
         self_ = this;
         stairsWrapper_ = this.$.stairsWrapper;
         stats_ = this.$.stats;
       },
-      climbStairs : function() {
+      initSensor: function(sensor) {
+        self_.count = sensor.value;
+      },
+      tick: function() {
         catchup_++;
         stats_.classList.add('hidden');
         setTimeout(this.animateStairs, 100);
       },
-      animateStairs : _.throttle(function() {
-
-        counter_++;
-
-        var stair = stairsWrapper_.lastElementChild;
-        stair.querySelector('.number').innerText = counter_ + 2;
-        stairsWrapper_.insertBefore(stair, stairsWrapper_.firstElementChild);
-
-        if (--catchup_ > 0) {
-          setTimeout(function () {
+      setCountTo: function(count) {
+        catchup_ = count - this.count;
+        stats_.classList.add('hidden');
+        this.animateStairs();
+      },
+      animateStairs: _.throttle(function() {
+        clearTimeout(timer_);
+        if (catchup_ > 0) {
+          self_.count++;
+          catchup_--;
+          var stair = stairsWrapper_.lastElementChild;
+          stair.querySelector('.number').innerText = self_.count + 2;
+          stairsWrapper_.insertBefore(stair, stairsWrapper_.firstElementChild);
+          timer_ = setTimeout(function () {
               self_.animateStairs();
           }, 500);
         }
         else {
           setTimeout(function() {
             stats_.classList.remove('hidden');
-          }, 500);
+          }, 100);
         }
-      }, 500, {trailing: false})
+      }, 500, {trailing: true})
     });
   })();
   </script>

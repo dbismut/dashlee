@@ -3,7 +3,7 @@
 }
 .bottle {
   display: inline-block;
-  width: 139px;
+  width: 138px;
   height: 208px;
   text-align: center;
   background: url('../../images/bottle.svg') no-repeat;
@@ -57,7 +57,7 @@
 .level {
   position: relative;
   top: 11px;
-  left: 0px;
+  left: 1px;
   display: inline-block;
   width: 118px;
   height: 178px;
