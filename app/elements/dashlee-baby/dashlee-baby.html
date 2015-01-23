@@ -8,11 +8,11 @@
     <div class="numbers">
       <div class="side">
         <div class="side-title">Red</div>
-        <div id="redNumber" class="number">[[redCount]]</div>
+        <div id="red" class="number">[[count.red]]</div>
       </div>
       <div class="side">
       <div class="side-title">Blue</div>
-        <div id="blueNumber" class="number">[[blueCount]]</div>
+        <div id="blue" class="number">[[count.blue]]</div>
       </div>
     </div>
     <div class="subtitle">goals scored on<br>the table-football</div>
@@ -22,35 +22,34 @@
     /*jslint nomen: true */
     /*global Odometer */
 
-    var self_, redOd_, blueOd_;
+    var self_, od_ = {red: null, blue: null};
 
     Polymer({
-      redCount: 0,
-      blueCount: 0,
+      count: {red: 0, blue: 0},
       ready: function() {
         self_ = this;
       },
       attached: function() {
-        redOd_ = new Odometer({
-          el: self_.$.redNumber,
+        od_.red = new Odometer({
+          el: self_.$.red,
           value: self_.redCount,
           format: '',
         });
-        blueOd_ = new Odometer({
-          el: self_.$.blueNumber,
+        od_.blue = new Odometer({
+          el: self_.$.blue,
           value: self_.blueCount,
           format: '',
         });
       },
       initSensor: function(sensor) {
-        self_.setCountTo(sensor.value);
+        self_.setCountTo(sensor.value, sensor._id);
       },
       tick: function(sensor) {
-        self_.setCountTo(sensor.value);
+        self_.setCountTo(self_.count[sensor._id] + 1, sensor._id);
       },
-      setCountTo: function(count) {
-        self_.count = count;
-        od_.update(self_.count);
+      setCountTo: function(count, side) {
+        self_.count[side] = count;
+        od_[side].update(self_.count[side]);
       }
     });
   })();

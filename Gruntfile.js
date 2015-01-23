@@ -1,7 +1,9 @@
 'use strict';
 var LIVERELOAD_PORT = 35729;
-var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
-var mountFolder = function (dir) {
+var lrSnippet = require('connect-livereload')({
+  port: LIVERELOAD_PORT
+});
+var mountFolder = function(dir) {
   return require('serve-static')(require('path').resolve(dir));
 };
 
@@ -11,7 +13,7 @@ var mountFolder = function (dir) {
 // use this if you want to match all subfolders:
 // 'test/spec/**/*.js'
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
   // show elapsed time at the end
   require('time-grunt')(grunt);
   // load all grunt tasks
@@ -29,7 +31,9 @@ module.exports = function (grunt) {
     watch: {
       options: {
         nospawn: true,
-        livereload: { liveCSS: false }
+        livereload: {
+          liveCSS: false
+        }
       },
       livereload: {
         options: {
@@ -81,12 +85,11 @@ module.exports = function (grunt) {
       options: {
         port: 9000,
         // change this to '0.0.0.0' to access the server from outside
-        //hostname: 'localhost'
         hostname: '0.0.0.0'
       },
       livereload: {
         options: {
-          middleware: function () {
+          middleware: function() {
             return [
               lrSnippet,
               mountFolder('.tmp'),
@@ -100,7 +103,7 @@ module.exports = function (grunt) {
           open: {
             target: 'http://localhost:<%= connect.options.port %>/test'
           },
-          middleware: function () {
+          middleware: function() {
             return [
               mountFolder('.tmp'),
               mountFolder(yeomanConfig.app)
@@ -111,7 +114,7 @@ module.exports = function (grunt) {
       },
       dist: {
         options: {
-          middleware: function () {
+          middleware: function() {
             return [
               mountFolder(yeomanConfig.dist)
             ];
@@ -151,12 +154,13 @@ module.exports = function (grunt) {
       options: {
         dirs: ['<%= yeoman.dist %>'],
         blockReplacements: {
-          vulcanized: function (block) {
+          css: function(block) {
+            var shimmed = (block.raw.join().indexOf('shim-shadowdom') > -1);
+            return '<link rel="stylesheet" href="' + block.dest + '"' + (shimmed ? ' shim-shadowdom>' : '>');
+          },
+          vulcanized: function(block) {
             return '<link rel="import" href="' + block.dest + '">';
           }
-          // htmlimport: function (block) {
-          //   return '<link rel="import" href="' + block.dest + '">';
-          // }
         }
       }
     },
@@ -177,7 +181,6 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/images',
-          // src: '{,*/}*.{png,jpg,jpeg,svg}',
           src: '{,*/}*.{png,jpg,jpeg}',
           dest: '<%= yeoman.dist %>/images'
         }]
@@ -255,10 +258,14 @@ module.exports = function (grunt) {
         }
       },
       local: {
-        options: {remote: false}
+        options: {
+          remote: false
+        }
       },
       remote: {
-        options: {remote: true}
+        options: {
+          remote: true
+        }
       }
     },
     // See this tutorial if you'd like to run PageSpeed
@@ -283,12 +290,12 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('server', function (target) {
+  grunt.registerTask('server', function(target) {
     grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
     grunt.task.run(['serve:' + target]);
   });
 
-  grunt.registerTask('serve', function (target) {
+  grunt.registerTask('serve', function(target) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'open', 'connect:dist:keepalive']);
     }

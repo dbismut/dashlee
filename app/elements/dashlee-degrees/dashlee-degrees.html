@@ -12,7 +12,7 @@
         left: 0;
       }
       .bottom {
-        background: white;
+        background-color: white;
         height: 60px;
         width: 100%;
         position: absolute;
@@ -75,9 +75,7 @@
           }, 1000);
         },
         fitCanvas: function() {
-          self_.async(function() {
-            self_.$.canvas.width  = self_.clientWidth;
-          }, null, 400);
+          self_.$.canvas.width  = self_.clientWidth;
         },
         tick: function(sensor) {
           self_.setCountTo(sensor.value);

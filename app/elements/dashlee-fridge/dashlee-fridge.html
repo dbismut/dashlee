@@ -7,8 +7,8 @@
       <div class="date">Today</div>
       <div id="number" class="number">[[count]]</div>
       <div class="subtitle">fridge
-        <br>doors
-        <br>opening</div>
+        <br>door
+        <br>openings</div>
     </div>
     <div class="column">
       <div id="door" class="door open">
@@ -63,7 +63,12 @@
         }, 3000);
       },
       initSensor: function(sensor) {
-        self_.tick(sensor);
+        self_.setCountTo(sensor.value);
+
+        self_.$.door.classList.remove('open');
+        timeout_ = setTimeout(function() {
+          self_.$.door.classList.add('open');
+        }, 3000);
       },
       setCountTo: function(count) {
         self_.count = count;
